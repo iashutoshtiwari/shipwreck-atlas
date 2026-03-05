@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: var(--font-sans);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+:root {
+  --background: 200 25% 98%;
+  --foreground: 220 12% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 12% 12%;
+  --border: 215 23% 88%;
+  --input: 215 23% 88%;
+  --ring: 201 92% 46%;
+  --muted: 208 30% 95%;
+  --muted-foreground: 215 16% 35%;
+  --primary: 201 92% 40%;
+  --primary-foreground: 0 0% 100%;
+  --radius: 0.9rem;
+}
+
+.dark {
+  --background: 220 18% 10%;
+  --foreground: 210 20% 94%;
+  --card: 220 18% 14%;
+  --card-foreground: 210 20% 94%;
+  --border: 219 14% 23%;
+  --input: 219 14% 23%;
+  --ring: 192 95% 54%;
+  --muted: 220 14% 18%;
+  --muted-foreground: 218 14% 70%;
+  --primary: 192 95% 54%;
+  --primary-foreground: 220 18% 10%;
+}
+
+* {
+  @apply border-border;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+.leaflet-container {
+  background: #c8d8e8;
+}
+
+.leaflet-control-zoom {
+  border: 0 !important;
+  border-radius: 14px !important;
+  overflow: hidden;
+  box-shadow: 0 14px 38px -20px rgba(2, 132, 199, 0.75);
+}
+
+.leaflet-control-zoom a {
+  display: grid !important;
+  place-items: center;
+  width: 40px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid color-mix(in oklab, hsl(var(--border)) 72%, transparent) !important;
+  background: color-mix(in oklab, hsl(var(--background)) 82%, transparent) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 20px !important;
+  font-weight: 500;
+  line-height: 1 !important;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.15s ease;
+}
+
+.leaflet-control-zoom a:last-child {
+  border-bottom: 0 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: color-mix(in oklab, hsl(var(--muted)) 90%, transparent) !important;
+}
+
+.leaflet-control-attribution {
+  @apply bg-background/80 text-muted-foreground backdrop-blur-sm;
+  border-radius: 8px 0 0 0;
+  padding-right: 4px;
+}
+
+.leaflet-tooltip {
+  border: 0;
+  border-radius: 10px;
+  background: color-mix(in oklab, hsl(var(--card)) 82%, transparent);
+  color: hsl(var(--card-foreground));
+  box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.55);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 4px 8px;
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: color-mix(in oklab, hsl(var(--card)) 82%, transparent);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  @apply bg-transparent shadow-none;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+}
+
+.wreck-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), transparent 34%), hsl(var(--primary));
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.22), 0 8px 24px -10px rgba(2, 132, 199, 0.8);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.wreck-marker-highlight {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.34), 0 10px 28px -8px rgba(56, 189, 248, 0.78);
+}
+
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background: color-mix(in oklab, hsl(var(--primary)) 58%, transparent) !important;
+}
+
+.marker-cluster-small div,
+.marker-cluster-medium div,
+.marker-cluster-large div {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 10px 24px -10px rgba(2, 132, 199, 0.75);
+}

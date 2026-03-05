@@ -1,0 +1,110 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RMS Titanic",
+        "year_lost": 1912,
+        "type": "Ocean Liner",
+        "cause": "Iceberg collision",
+        "depth_m": 3800,
+        "summary": "British passenger liner that sank during her maiden voyage.",
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/640px-RMS_Titanic_3.jpg"
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/RMS_Titanic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-49.9469, 41.7325]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RMS Lusitania",
+        "year_lost": 1915,
+        "type": "Ocean Liner",
+        "cause": "Torpedoed by German U-boat",
+        "depth_m": 93,
+        "summary": "British ocean liner sunk off the coast of Ireland during World War I.",
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/RMS_Lusitania.jpg/640px-RMS_Lusitania.jpg"
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/RMS_Lusitania"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-8.5417, 51.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HMHS Britannic",
+        "year_lost": 1916,
+        "type": "Hospital Ship",
+        "cause": "Mine explosion",
+        "depth_m": 120,
+        "summary": "Sister ship of Titanic that sank in the Aegean Sea during wartime service.",
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/HMHS_Britannic.jpg/640px-HMHS_Britannic.jpg"
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/HMHS_Britannic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.1544, 37.7081]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "USS Arizona",
+        "year_lost": 1941,
+        "type": "Battleship",
+        "cause": "Aerial bomb attack",
+        "depth_m": 12,
+        "summary": "U.S. battleship sunk during the attack on Pearl Harbor.",
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/USS_Arizona%2C_1916.jpg/640px-USS_Arizona%2C_1916.jpg"
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/USS_Arizona_(BB-39)"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-157.9500, 21.3649]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bismarck",
+        "year_lost": 1941,
+        "type": "Battleship",
+        "cause": "Naval gunfire and scuttling",
+        "depth_m": 4791,
+        "summary": "German battleship sunk in the North Atlantic after intense pursuit.",
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bundesarchiv_Bild_146-1989-012-16%2C_Schlachtschiff_Bismarck.jpg/640px-Bundesarchiv_Bild_146-1989-012-16%2C_Schlachtschiff_Bismarck.jpg"
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/German_battleship_Bismarck"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-16.1167, 48.1667]
+      }
+    }
+  ]
+}
