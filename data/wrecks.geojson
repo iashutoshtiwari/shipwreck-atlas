@@ -11,11 +11,10 @@
         "depth_m": 3800,
         "summary": "British passenger liner that sank during her maiden voyage.",
         "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/640px-RMS_Titanic_3.jpg"
+          "https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/6/6d/RMS_Titanic_3_%28cropped_to_ship%29.jpg"
         ],
-        "sources": [
-          "https://en.wikipedia.org/wiki/RMS_Titanic"
-        ]
+        "sources": ["https://en.wikipedia.org/wiki/RMS_Titanic"]
       },
       "geometry": {
         "type": "Point",
@@ -34,9 +33,7 @@
         "images": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/RMS_Lusitania.jpg/640px-RMS_Lusitania.jpg"
         ],
-        "sources": [
-          "https://en.wikipedia.org/wiki/RMS_Lusitania"
-        ]
+        "sources": ["https://en.wikipedia.org/wiki/RMS_Lusitania"]
       },
       "geometry": {
         "type": "Point",
@@ -55,9 +52,7 @@
         "images": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/HMHS_Britannic.jpg/640px-HMHS_Britannic.jpg"
         ],
-        "sources": [
-          "https://en.wikipedia.org/wiki/HMHS_Britannic"
-        ]
+        "sources": ["https://en.wikipedia.org/wiki/HMHS_Britannic"]
       },
       "geometry": {
         "type": "Point",
@@ -74,15 +69,14 @@
         "depth_m": 12,
         "summary": "U.S. battleship sunk during the attack on Pearl Harbor.",
         "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/USS_Arizona%2C_1916.jpg/640px-USS_Arizona%2C_1916.jpg"
+          "https://upload.wikimedia.org/wikipedia/commons/c/c3/USS_Arizona_Memorial_%28aerial_view%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/1/11/Arizona_%28BB39%29_Port_Bow%2C_Underway_-_NARA_-_5900075_-_1930.jpg"
         ],
-        "sources": [
-          "https://en.wikipedia.org/wiki/USS_Arizona_(BB-39)"
-        ]
+        "sources": ["https://en.wikipedia.org/wiki/USS_Arizona_(BB-39)"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-157.9500, 21.3649]
+        "coordinates": [-157.95, 21.3649]
       }
     },
     {
@@ -95,11 +89,9 @@
         "depth_m": 4791,
         "summary": "German battleship sunk in the North Atlantic after intense pursuit.",
         "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bundesarchiv_Bild_146-1989-012-16%2C_Schlachtschiff_Bismarck.jpg/640px-Bundesarchiv_Bild_146-1989-012-16%2C_Schlachtschiff_Bismarck.jpg"
+          "https://upload.wikimedia.org/wikipedia/commons/f/fe/Bundesarchiv_Bild_193-04-1-26%2C_Schlachtschiff_Bismarck.jpg"
         ],
-        "sources": [
-          "https://en.wikipedia.org/wiki/German_battleship_Bismarck"
-        ]
+        "sources": ["https://en.wikipedia.org/wiki/German_battleship_Bismarck"]
       },
       "geometry": {
         "type": "Point",
