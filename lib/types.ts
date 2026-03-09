@@ -1,24 +1,24 @@
 export type WreckProperties = {
-  name: string;
-  year_lost: number;
-  type: string;
-  cause: string;
-  depth_m: number;
-  summary: string;
-  images: string[];
-  sources: string[];
-};
+  name: string
+  year_lost: number
+  type: string
+  cause: string
+  depth_m: number
+  summary: string
+  images: string[]
+  sources: string[]
+}
 
 export type WreckFeature = {
-  type: 'Feature';
-  properties: WreckProperties;
+  type: 'Feature'
+  properties: WreckProperties
   geometry: {
-    type: 'Point';
-    coordinates: [number, number];
-  };
-};
+    type: 'Point'
+    coordinates: [number, number]
+  }
+}
 
 export type WreckFeatureCollection = {
-  type: 'FeatureCollection';
-  features: WreckFeature[];
-};
+  type: 'FeatureCollection'
+  features: WreckFeature[]
+}

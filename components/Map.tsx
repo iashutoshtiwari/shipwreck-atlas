@@ -62,7 +62,10 @@ function MapZoomToResults({ features }: { features: WreckFeature[] }) {
       return
     }
 
-    map.flyToBounds(createBoundsForFeatures(features), { padding: [50, 50], duration: 0.7 })
+    map.flyToBounds(createBoundsForFeatures(features), {
+      padding: [50, 50],
+      duration: 0.7,
+    })
   }, [features, map])
 
   return null

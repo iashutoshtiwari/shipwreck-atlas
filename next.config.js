@@ -2,18 +2,18 @@
 const nextConfig = {
   output: 'export',
   images: {
-    unoptimized: true
+    unoptimized: true,
   },
   turbopack: {
     rules: {
       '*.geojson': [
         {
           loaders: [],
-          as: '*.json'
-        }
-      ]
-    }
-  }
-};
+          as: '*.json',
+        },
+      ],
+    },
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
