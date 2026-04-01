@@ -33,7 +33,7 @@ export function WreckPopup({ wreck }: WreckPopupProps) {
   }, [images.length])
 
   return (
-    <Card className='w-[18.25rem] border-border/40 bg-background/92 shadow-[0_26px_44px_-24px_rgba(2,6,23,0.7)] backdrop-blur-md sm:w-[22rem]'>
+    <Card className='w-73 border-border/40 bg-background/92 shadow-[0_26px_44px_-24px_rgba(2,6,23,0.7)] backdrop-blur-md sm:w-88'>
       <CardHeader className='space-y-1 pb-2'>
         <CardTitle className='text-base leading-tight tracking-tight'>{properties.name}</CardTitle>
         <p className='inline-flex w-fit items-center gap-1 rounded-full border border-border/60 bg-muted/55 px-2 py-0.5 text-[11px] uppercase tracking-wide text-muted-foreground'>
@@ -57,7 +57,7 @@ export function WreckPopup({ wreck }: WreckPopupProps) {
               />
             ))}
 
-            <div className='pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/65 via-black/10 to-transparent px-2.5 pb-2 pt-4 text-[11px] text-white'>
+            <div className='pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-linear-to-t from-black/65 via-black/10 to-transparent px-2.5 pb-2 pt-4 text-[11px] text-white'>
               <span className='inline-flex items-center gap-1 rounded-full bg-black/30 px-2 py-0.5 backdrop-blur-sm'>
                 <Waves className='h-3 w-3' aria-hidden='true' />
                 Gallery
