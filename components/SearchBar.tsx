@@ -1,18 +1,16 @@
 'use client'
 
 import { Input } from '@/components/ui/input'
-import { Search } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 
 type SearchBarProps = {
   value: string
   onChange: (value: string) => void
-  resultCount: number
-  totalCount: number
 }
 
-export function SearchBar({ value, onChange, resultCount, totalCount }: SearchBarProps) {
+export function SearchBar({ value, onChange }: SearchBarProps) {
   return (
-    <div className='w-full min-w-0 sm:w-100'>
+    <div className='w-full min-w-0'>
       <label htmlFor='wreck-search' className='sr-only'>
         Search shipwrecks
       </label>
@@ -25,14 +23,21 @@ export function SearchBar({ value, onChange, resultCount, totalCount }: SearchBa
           id='wreck-search'
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          placeholder='Search name, year, cause, type...'
-          className='h-11 rounded-2xl border-border/70 bg-card/78 pl-10 shadow-xs backdrop-blur-xs'
+          placeholder='Search wrecks, places, vessels…'
+          className='h-11 rounded-md border-border bg-input/70 pl-10 pr-10 shadow-none placeholder:text-muted-foreground/75'
           aria-label='Search shipwrecks'
         />
+        {value ? (
+          <button
+            type='button'
+            onClick={() => onChange('')}
+            className='absolute right-2 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+            aria-label='Clear search'
+          >
+            <X className='h-3.5 w-3.5' aria-hidden='true' />
+          </button>
+        ) : null}
       </div>
-      <p className='mt-1.5 pl-1 text-xs text-muted-foreground' aria-live='polite'>
-        Showing {resultCount} of {totalCount} wrecks
-      </p>
     </div>
   )
 }

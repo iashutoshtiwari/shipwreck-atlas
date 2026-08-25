@@ -4,99 +4,314 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "RMS Titanic",
-        "year_lost": 1912,
-        "type": "Ocean Liner",
-        "cause": "Iceberg collision",
-        "depth_m": 3800,
-        "summary": "British passenger liner that sank during her maiden voyage.",
-        "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg",
-          "https://upload.wikimedia.org/wikipedia/commons/6/6d/RMS_Titanic_3_%28cropped_to_ship%29.jpg"
-        ],
-        "sources": ["https://en.wikipedia.org/wiki/RMS_Titanic"]
+        "id": "antikythera-wreck", "name": "Antikythera wreck", "year_lost": -65, "loss_date": "c. 70–60 BCE", "era": "ancient",
+        "location": "Off Antikythera, Greece", "region": "Aegean Sea", "flag": "Roman-era Mediterranean",
+        "vessel_category": "merchant", "vessel_type": "Roman cargo vessel", "cause": "Unknown; likely foundered near the island",
+        "depth_m": 45, "lives_lost": null, "status": "partial_remains",
+        "summary": "Sponge divers discovered this Roman-era trading vessel in 1900. Its cargo included monumental sculpture, luxury goods, and the Antikythera mechanism—an intricate geared device that transformed modern understanding of ancient Greek astronomy and engineering.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Antikes_Wrack_von_Antikythera_02.jpg", "alt": "Early divers working above the Antikythera wreck site", "credit": "Unknown photographer", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Antikes_Wrack_von_Antikythera_02.jpg" }],
+        "sources": [{ "label": "Woods Hole Oceanographic Institution", "url": "https://www.whoi.edu/know-your-ocean/ocean-topics/underwater-archaeology/antikythera-shipwreck/" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Antikythera-wreck" }]
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-49.9469, 41.7325]
-      }
+      "geometry": { "type": "Point", "coordinates": [23.31, 35.883] }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "RMS Lusitania",
-        "year_lost": 1915,
-        "type": "Ocean Liner",
-        "cause": "Torpedoed by German U-boat",
-        "depth_m": 93,
-        "summary": "British ocean liner sunk off the coast of Ireland during World War I.",
-        "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/RMS_Lusitania.jpg/640px-RMS_Lusitania.jpg"
-        ],
-        "sources": ["https://en.wikipedia.org/wiki/RMS_Lusitania"]
+        "id": "mary-rose", "name": "Mary Rose", "year_lost": 1545, "loss_date": "19 July 1545", "era": "age-of-sail",
+        "location": "The Solent, England", "region": "English Channel", "flag": "Kingdom of England",
+        "vessel_category": "naval", "vessel_type": "Carrack warship", "cause": "Foundered while engaging a French fleet",
+        "depth_m": 14, "lives_lost": 470, "status": "raised",
+        "summary": "Henry VIII’s warship sank within sight of Portsmouth during the Battle of the Solent. Raised in 1982 after centuries beneath the seabed, her surviving hull and thousands of personal objects offer an unusually intimate record of Tudor naval life.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/AnthonyRoll-2_Mary_Rose.jpg", "alt": "The Mary Rose depicted in the sixteenth-century Anthony Roll", "credit": "Anthony Anthony; scan by Gerry Bye", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:AnthonyRoll-2_Mary_Rose.jpg" }],
+        "sources": [{ "label": "Mary Rose Museum", "url": "https://maryrose.org/discover/history/" }, { "label": "Historic England", "url": "https://historicengland.org.uk/listing/the-list/list-entry/1000061" }]
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-8.5417, 51.25]
-      }
+      "geometry": { "type": "Point", "coordinates": [-1.106, 50.801] }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "HMHS Britannic",
-        "year_lost": 1916,
-        "type": "Hospital Ship",
-        "cause": "Mine explosion",
-        "depth_m": 120,
-        "summary": "Sister ship of Titanic that sank in the Aegean Sea during wartime service.",
-        "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/HMHS_Britannic.jpg/640px-HMHS_Britannic.jpg"
-        ],
-        "sources": ["https://en.wikipedia.org/wiki/HMHS_Britannic"]
+        "id": "nuestra-senora-de-atocha", "name": "Nuestra Señora de Atocha", "year_lost": 1622, "loss_date": "6 September 1622", "era": "age-of-sail",
+        "location": "Florida Keys, United States", "region": "Gulf of Mexico", "flag": "Spanish Empire",
+        "vessel_category": "merchant", "vessel_type": "Treasure galleon", "cause": "Hurricane",
+        "depth_m": 17, "lives_lost": 260, "status": "salvaged",
+        "summary": "The heavily laden flagship of Spain’s Tierra Firme fleet was driven onto a reef during a hurricane. Centuries of searching culminated in the discovery of its main cargo in 1985, including silver, gold, emeralds, and remarkable seventeenth-century artifacts.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Sevilla_Nuestra_Se%C3%B1ora_de_Atocha_Archivo_General_de_Indias_21-03-2011_11-24-15.jpg", "alt": "Archival illustration of Nuestra Señora de Atocha", "credit": "Paul Hermans", "license": "CC BY-SA 3.0", "source_url": "https://commons.wikimedia.org/wiki/File:Sevilla_Nuestra_Se%C3%B1ora_de_Atocha_Archivo_General_de_Indias_21-03-2011_11-24-15.jpg" }],
+        "sources": [{ "label": "Florida Keys History Center", "url": "https://www.keyslibraries.org/atocha" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Nuestra-Senora-de-Atocha" }]
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [25.1544, 37.7081]
-      }
+      "geometry": { "type": "Point", "coordinates": [-82.283, 24.533] }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "USS Arizona",
-        "year_lost": 1941,
-        "type": "Battleship",
-        "cause": "Aerial bomb attack",
-        "depth_m": 12,
-        "summary": "U.S. battleship sunk during the attack on Pearl Harbor.",
-        "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/c/c3/USS_Arizona_Memorial_%28aerial_view%29.jpg",
-          "https://upload.wikimedia.org/wikipedia/commons/1/11/Arizona_%28BB39%29_Port_Bow%2C_Underway_-_NARA_-_5900075_-_1930.jpg"
-        ],
-        "sources": ["https://en.wikipedia.org/wiki/USS_Arizona_(BB-39)"]
+        "id": "vasa", "name": "Vasa", "year_lost": 1628, "loss_date": "10 August 1628", "era": "age-of-sail",
+        "location": "Stockholm, Sweden", "region": "Baltic Sea", "flag": "Swedish Empire",
+        "vessel_category": "naval", "vessel_type": "Warship", "cause": "Capsized after taking wind through open gunports",
+        "depth_m": 32, "lives_lost": 30, "status": "raised",
+        "summary": "Built as a symbol of Swedish naval power, Vasa capsized minutes into her maiden voyage because her high superstructure and insufficient stability left little margin for a gust. Raised in 1961, she survives as one of the world’s best-preserved seventeenth-century ships.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/1/15/The_Vasa_from_the_Bow.jpg", "alt": "The preserved Vasa viewed from the bow inside its museum", "credit": "Javier Kohen", "license": "CC BY-SA 3.0", "source_url": "https://commons.wikimedia.org/wiki/File:The_Vasa_from_the_Bow.jpg" }],
+        "sources": [{ "label": "Vasa Museum", "url": "https://www.vasamuseet.se/en/explore/vasa-history" }, { "label": "Swedish National Maritime Museums", "url": "https://www.smtm.se/en" }]
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-157.95, 21.3649]
-      }
+      "geometry": { "type": "Point", "coordinates": [18.087, 59.327] }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "Bismarck",
-        "year_lost": 1941,
-        "type": "Battleship",
-        "cause": "Naval gunfire and scuttling",
-        "depth_m": 4791,
-        "summary": "German battleship sunk in the North Atlantic after intense pursuit.",
-        "images": [
-          "https://upload.wikimedia.org/wikipedia/commons/f/fe/Bundesarchiv_Bild_193-04-1-26%2C_Schlachtschiff_Bismarck.jpg"
-        ],
-        "sources": ["https://en.wikipedia.org/wiki/German_battleship_Bismarck"]
+        "id": "batavia", "name": "Batavia", "year_lost": 1629, "loss_date": "4 June 1629", "era": "age-of-sail",
+        "location": "Houtman Abrolhos, Australia", "region": "Indian Ocean", "flag": "Dutch Republic",
+        "vessel_category": "merchant", "vessel_type": "Dutch East Indiaman", "cause": "Struck Morning Reef",
+        "depth_m": 6, "lives_lost": 40, "status": "partial_remains",
+        "summary": "Batavia struck a reef on her maiden voyage to Java. The wreck was followed by mutiny, massacre, rescue, and trial—one of the most harrowing episodes in maritime history. Excavated timbers and cargo are preserved by the Western Australian Museum.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/c/c7/De_BATAVIA_voor_de_film_onderweg_als_de_NIEUW_HOORN_%2802%29.jpg", "alt": "A full-scale reconstruction of Batavia under sail", "credit": "ADZee", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:De_BATAVIA_voor_de_film_onderweg_als_de_NIEUW_HOORN_(02).jpg" }],
+        "sources": [{ "label": "Western Australian Museum", "url": "https://museum.wa.gov.au/museums/shipwreck-galleries/batavia-gallery" }, { "label": "Australian National Maritime Museum", "url": "https://www.sea.museum/whats-on/exhibitions/batavia" }]
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-16.1167, 48.1667]
-      }
+      "geometry": { "type": "Point", "coordinates": [113.8, -28.48] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "whydah-gally", "name": "Whydah Gally", "year_lost": 1717, "loss_date": "26 April 1717", "era": "age-of-sail",
+        "location": "Cape Cod, United States", "region": "North Atlantic Ocean", "flag": "British / pirate",
+        "vessel_category": "merchant", "vessel_type": "Galley later used as a pirate flagship", "cause": "Driven ashore in a nor’easter",
+        "depth_m": 5, "lives_lost": 144, "status": "partial_remains",
+        "summary": "Originally built for the Atlantic slave trade, Whydah was captured by the pirate Samuel Bellamy and became his flagship. A violent storm wrecked her off Cape Cod; the site’s discovery in 1984 produced the first authenticated pirate shipwreck in North America.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/4/44/Whydah-model.jpg", "alt": "Scale model showing the form of Whydah Gally", "credit": "jjsala", "license": "CC BY 2.0", "source_url": "https://commons.wikimedia.org/wiki/File:Whydah-model.jpg" }],
+        "sources": [{ "label": "Whydah Pirate Museum", "url": "https://www.discoverpirates.com/whydah-gally/" }, { "label": "National Geographic", "url": "https://www.nationalgeographic.com/history/article/whydah-pirate-shipwreck" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-70.05, 41.9] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "queen-annes-revenge", "name": "Queen Anne’s Revenge", "year_lost": 1718, "loss_date": "June 1718", "era": "age-of-sail",
+        "location": "Beaufort Inlet, United States", "region": "North Atlantic Ocean", "flag": "French / pirate",
+        "vessel_category": "naval", "vessel_type": "Frigate converted to pirate flagship", "cause": "Grounded on a sandbar",
+        "depth_m": 8, "lives_lost": 0, "status": "partial_remains",
+        "summary": "The former French slave ship La Concorde became Blackbeard’s heavily armed flagship in 1717. It grounded near Beaufort Inlet the following year. Archaeologists have recovered cannon, anchors, medical instruments, and thousands of objects from the protected site.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Queen_Anne%27s_Revenge.JPG", "alt": "An eighteenth-century depiction associated with Queen Anne’s Revenge", "credit": "Joseph Nicholls", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Queen_Anne%27s_Revenge.JPG" }],
+        "sources": [{ "label": "Queen Anne’s Revenge Project", "url": "https://www.qaronline.org/" }, { "label": "North Carolina Department of Natural and Cultural Resources", "url": "https://www.dncr.nc.gov/about-us/history/queen-annes-revenge" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-76.64, 34.69] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hms-pandora", "name": "HMS Pandora", "year_lost": 1791, "loss_date": "29 August 1791", "era": "age-of-sail",
+        "location": "Pandora Entrance, Australia", "region": "Coral Sea", "flag": "Great Britain",
+        "vessel_category": "naval", "vessel_type": "Royal Navy frigate", "cause": "Struck the Great Barrier Reef",
+        "depth_m": 33, "lives_lost": 35, "status": "in_situ",
+        "summary": "Sent into the Pacific to capture the Bounty mutineers, Pandora struck the outer Great Barrier Reef on her return voyage. The compact wreck and its surviving artifacts preserve an exceptional late-eighteenth-century naval time capsule.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/HMS_Pandora.jpg", "alt": "HMS Pandora foundering on the Great Barrier Reef", "credit": "Robert Batty after Peter Heywood", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:HMS_Pandora.jpg" }],
+        "sources": [{ "label": "Queensland Museum", "url": "https://www.museum.qld.gov.au/learn-and-discover/queenslands-stories/hms-pandora" }, { "label": "Australasian Underwater Cultural Heritage Database", "url": "https://www.dcceew.gov.au/parks-heritage/heritage/underwater-heritage/underwater-cultural-heritage-database" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [143.983, -11.383] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "uss-monitor", "name": "USS Monitor", "year_lost": 1862, "loss_date": "31 December 1862", "era": "industrial-age",
+        "location": "Cape Hatteras, United States", "region": "North Atlantic Ocean", "flag": "United States",
+        "vessel_category": "naval", "vessel_type": "Ironclad monitor", "cause": "Foundered in heavy seas",
+        "depth_m": 73, "lives_lost": 16, "status": "partial_remains",
+        "summary": "Famous for its Civil War duel with CSS Virginia, Monitor was lost in a storm while under tow. The wreck became the United States’ first national marine sanctuary; its revolutionary rotating turret was raised in 2002 for conservation.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/3/3f/USS_Monitor_at_sea.jpg", "alt": "USS Monitor at sea with its low deck and circular turret", "credit": "U.S. Naval History and Heritage Command", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:USS_Monitor_at_sea.jpg" }],
+        "sources": [{ "label": "NOAA Monitor National Marine Sanctuary", "url": "https://monitor.noaa.gov/shipwreck/" }, { "label": "U.S. Naval History and Heritage Command", "url": "https://www.history.navy.mil/browse-by-topic/ships/modern-ships/uss-monitor.html" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-75.409, 35.006] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rms-titanic", "name": "RMS Titanic", "year_lost": 1912, "loss_date": "15 April 1912", "era": "industrial-age",
+        "location": "North Atlantic Ocean", "region": "North Atlantic Ocean", "flag": "United Kingdom",
+        "vessel_category": "passenger", "vessel_type": "Olympic-class ocean liner", "cause": "Iceberg collision",
+        "depth_m": 3800, "lives_lost": 1496, "status": "in_situ",
+        "summary": "Titanic struck an iceberg during her maiden voyage from Southampton to New York. The disaster transformed maritime safety regulation, while the wreck’s 1985 discovery revealed two major hull sections and an immense debris field on the abyssal plain.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/6/6d/RMS_Titanic_3_%28cropped_to_ship%29.jpg", "alt": "RMS Titanic departing Southampton in April 1912", "credit": "Francis Godolphin Osbourne Stuart", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:RMS_Titanic_3_(cropped_to_ship).jpg" }, { "src": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg", "alt": "The bow of Titanic on the North Atlantic seabed", "credit": "NOAA / Institute for Exploration / University of Rhode Island", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Titanic_wreck_bow.jpg" }],
+        "sources": [{ "label": "NOAA Ocean Exploration", "url": "https://oceanexplorer.noaa.gov/titanic/" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Titanic" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-49.9469, 41.7325] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rms-lusitania", "name": "RMS Lusitania", "year_lost": 1915, "loss_date": "7 May 1915", "era": "world-wars",
+        "location": "Old Head of Kinsale, Ireland", "region": "Celtic Sea", "flag": "United Kingdom",
+        "vessel_category": "passenger", "vessel_type": "Ocean liner", "cause": "Torpedoed by German submarine U-20",
+        "depth_m": 93, "lives_lost": 1198, "status": "partial_remains",
+        "summary": "A German U-boat torpedoed Lusitania near the end of a transatlantic crossing. The liner sank in roughly eighteen minutes, killing nearly 1,200 people and becoming an enduring symbol of unrestricted submarine warfare during the First World War.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/d/d9/RMS_Lusitania_coming_into_port%2C_possibly_in_New_York%2C_1907-13-crop.jpg", "alt": "RMS Lusitania entering port before the First World War", "credit": "George Grantham Bain Collection", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:RMS_Lusitania_coming_into_port,_possibly_in_New_York,_1907-13-crop.jpg" }],
+        "sources": [{ "label": "Imperial War Museums", "url": "https://www.iwm.org.uk/history/the-sinking-of-the-lusitania" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Lusitania-British-ship" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-8.5417, 51.25] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "endurance", "name": "Endurance", "year_lost": 1915, "loss_date": "21 November 1915", "era": "world-wars",
+        "location": "Weddell Sea, Antarctica", "region": "Southern Ocean", "flag": "United Kingdom",
+        "vessel_category": "exploration", "vessel_type": "Three-masted expedition barquentine", "cause": "Crushed by pack ice",
+        "depth_m": 3008, "lives_lost": 0, "status": "in_situ",
+        "summary": "Ernest Shackleton’s expedition ship became trapped and was slowly crushed by Weddell Sea pack ice. Every member of the expedition survived the extraordinary escape. Found in 2022, the wreck remains upright and exceptionally preserved in the cold deep water.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Endurance_under_full_sail_Frank_Hurley_State_Library_NSW_a090012h.jpg", "alt": "Endurance under full sail during Shackleton’s expedition", "credit": "Frank Hurley / State Library of New South Wales", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Endurance_under_full_sail_Frank_Hurley_State_Library_NSW_a090012h.jpg" }],
+        "sources": [{ "label": "Falklands Maritime Heritage Trust", "url": "https://fmht.co.uk/wreck-of-endurance-found/" }, { "label": "Royal Museums Greenwich", "url": "https://www.rmg.co.uk/stories/topics/shackletons-endurance-expedition-timeline" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-52.3297, -68.7392] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hmhs-britannic", "name": "HMHS Britannic", "year_lost": 1916, "loss_date": "21 November 1916", "era": "world-wars",
+        "location": "Kea Channel, Greece", "region": "Aegean Sea", "flag": "United Kingdom",
+        "vessel_category": "passenger", "vessel_type": "Hospital ship and Olympic-class liner", "cause": "Struck a naval mine",
+        "depth_m": 119, "lives_lost": 30, "status": "in_situ",
+        "summary": "Titanic’s younger sister served as a hospital ship during the First World War. A mine explosion opened the hull in the Kea Channel, and Britannic sank in under an hour. The enormous wreck lies on its starboard side in clear Aegean water.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/4/48/HMHS_Britannic.jpg", "alt": "HMHS Britannic painted white with hospital ship markings", "credit": "Allan C. Green", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:HMHS_Britannic.jpg" }],
+        "sources": [{ "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Britannic" }, { "label": "British Pathé Archive", "url": "https://www.britishpathe.com/asset/180541/" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [25.1544, 37.7081] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "uss-arizona", "name": "USS Arizona", "year_lost": 1941, "loss_date": "7 December 1941", "era": "world-wars",
+        "location": "Pearl Harbor, Hawaiʻi", "region": "Pacific Ocean", "flag": "United States",
+        "vessel_category": "naval", "vessel_type": "Pennsylvania-class battleship", "cause": "Aerial bombing during the attack on Pearl Harbor",
+        "depth_m": 12, "lives_lost": 1177, "status": "in_situ",
+        "summary": "A bomb penetrated Arizona’s deck and detonated near the forward magazines during the attack on Pearl Harbor. The battleship was destroyed with 1,177 sailors and Marines aboard; the preserved hull now serves as both a war grave and national memorial.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/1/11/Arizona_%28BB39%29_Port_Bow%2C_Underway_-_NARA_-_5900075_-_1930.jpg", "alt": "USS Arizona underway before the Second World War", "credit": "U.S. National Archives; photographer unknown", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Arizona_(BB39)_Port_Bow,_Underway_-_NARA_-_5900075_-_1930.jpg" }],
+        "sources": [{ "label": "National Park Service", "url": "https://www.nps.gov/perl/learn/historyculture/uss-arizona.htm" }, { "label": "Naval History and Heritage Command", "url": "https://www.history.navy.mil/browse-by-topic/ships/modern-ships/uss-arizona.html" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-157.95, 21.3649] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ss-thistlegorm", "name": "SS Thistlegorm", "year_lost": 1941, "loss_date": "6 October 1941", "era": "world-wars",
+        "location": "Strait of Gubal, Egypt", "region": "Red Sea", "flag": "United Kingdom",
+        "vessel_category": "merchant", "vessel_type": "Armed merchant cargo ship", "cause": "Bombed by German aircraft",
+        "depth_m": 30, "lives_lost": 9, "status": "in_situ",
+        "summary": "Thistlegorm was carrying military vehicles, locomotives, ammunition, and supplies when German bombers found her at anchor. The cargo remains visible within the broken hull, making the site both a wartime archaeological record and one of the world’s best-known recreational dives.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Thistlegorm_train_parts_minus_red_edit.jpg", "alt": "Railway equipment resting inside the wreck of SS Thistlegorm", "credit": "Woodym555; edited by Fir0002", "license": "CC BY-SA 3.0", "source_url": "https://commons.wikimedia.org/wiki/File:Thistlegorm_train_parts_minus_red_edit.jpg" }],
+        "sources": [{ "label": "The Thistlegorm Project", "url": "https://thethistlegormproject.com/" }, { "label": "Historic England Research", "url": "https://historicengland.org.uk/research/results/reports/63-2018" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [33.921, 27.815] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bismarck", "name": "Bismarck", "year_lost": 1941, "loss_date": "27 May 1941", "era": "world-wars",
+        "location": "West of Brest, France", "region": "North Atlantic Ocean", "flag": "Germany",
+        "vessel_category": "naval", "vessel_type": "Bismarck-class battleship", "cause": "Naval gunfire, torpedoes, and scuttling",
+        "depth_m": 4791, "lives_lost": 2104, "status": "in_situ",
+        "summary": "After sinking HMS Hood, Bismarck was pursued across the North Atlantic by a large Royal Navy force. Disabled and overwhelmed, the battleship sank with most of her crew. The wreck was located in 1989 and rests upright on an abyssal plain.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Bundesarchiv_Bild_193-04-1-26%2C_Schlachtschiff_Bismarck.jpg", "alt": "German battleship Bismarck photographed at sea", "credit": "German Federal Archives; photographer unknown", "license": "CC BY-SA 3.0 DE", "source_url": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_193-04-1-26,_Schlachtschiff_Bismarck.jpg" }],
+        "sources": [{ "label": "Imperial War Museums", "url": "https://www.iwm.org.uk/history/the-hunt-for-the-bismarck" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Bismarck-German-ship" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-16.2, 48.17] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hms-hood", "name": "HMS Hood", "year_lost": 1941, "loss_date": "24 May 1941", "era": "world-wars",
+        "location": "Denmark Strait", "region": "North Atlantic Ocean", "flag": "United Kingdom",
+        "vessel_category": "naval", "vessel_type": "Admiral-class battlecruiser", "cause": "Magazine explosion during battle",
+        "depth_m": 2800, "lives_lost": 1415, "status": "in_situ",
+        "summary": "For two decades Hood embodied British sea power. During the Battle of the Denmark Strait, a catastrophic explosion broke the battlecruiser apart within minutes. Only three men survived, and the widely scattered wreck remains a protected war grave.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/3/31/HMS_Hood_%2851%29_-_March_17%2C_1924.jpg", "alt": "HMS Hood photographed in 1924", "credit": "Allan C. Green; restoration by Adam Cuerden", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:HMS_Hood_(51)_-_March_17,_1924.jpg" }],
+        "sources": [{ "label": "Royal Navy", "url": "https://www.royalnavy.mod.uk/news/2021/may/24/20210524-hood-80" }, { "label": "Imperial War Museums", "url": "https://www.iwm.org.uk/history/the-sinking-of-hms-hood" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-32.29, 63.33] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mv-wilhelm-gustloff", "name": "MV Wilhelm Gustloff", "year_lost": 1945, "loss_date": "30 January 1945", "era": "world-wars",
+        "location": "Off Pomerania, Poland", "region": "Baltic Sea", "flag": "Germany",
+        "vessel_category": "passenger", "vessel_type": "Passenger ship used as a wartime transport", "cause": "Torpedoed by Soviet submarine S-13",
+        "depth_m": 45, "lives_lost": 9000, "status": "in_situ",
+        "summary": "Overcrowded with civilians and military personnel fleeing East Prussia, Wilhelm Gustloff was struck by three torpedoes in the Baltic. Estimates place the death toll near 9,000, making it the deadliest single ship sinking in recorded history.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bundesarchiv_Bild_183-H27992%2C_Lazarettschiff_%22Wilhelm_Gustloff%22_in_Danzig.jpg", "alt": "Wilhelm Gustloff serving as a hospital ship in Danzig", "credit": "Hans Sönnke / German Federal Archives", "license": "CC BY-SA 3.0 DE", "source_url": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-H27992,_Lazarettschiff_%22Wilhelm_Gustloff%22_in_Danzig.jpg" }],
+        "sources": [{ "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/MV-Wilhelm-Gustloff" }, { "label": "German Maritime Museum", "url": "https://www.dsm.museum/en" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [17.42, 55.07] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "yamato", "name": "Yamato", "year_lost": 1945, "loss_date": "7 April 1945", "era": "world-wars",
+        "location": "Southwest of Kyushu, Japan", "region": "East China Sea", "flag": "Japan",
+        "vessel_category": "naval", "vessel_type": "Yamato-class battleship", "cause": "Carrier aircraft attack during Operation Ten-Go",
+        "depth_m": 340, "lives_lost": 3055, "status": "in_situ",
+        "summary": "The largest battleship ever built sailed toward Okinawa on a one-way mission during the final months of the Pacific War. Waves of U.S. carrier aircraft overwhelmed the ship; a magazine explosion tore the hull apart as Yamato capsized.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Japanese_battleship_Yamato_running_trials_off_Bungo_Strait%2C_20_October_1941.jpg", "alt": "Japanese battleship Yamato running sea trials in 1941", "credit": "Hasuya Hirohata", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Japanese_battleship_Yamato_running_trials_off_Bungo_Strait,_20_October_1941.jpg" }],
+        "sources": [{ "label": "U.S. Naval History and Heritage Command", "url": "https://www.history.navy.mil/content/history/museums/nmusn/pamphlets/wwii-pacific/yamato.html" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Yamato-ship" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [128.067, 30.367] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "uss-indianapolis", "name": "USS Indianapolis", "year_lost": 1945, "loss_date": "30 July 1945", "era": "world-wars",
+        "location": "Philippine Sea", "region": "Pacific Ocean", "flag": "United States",
+        "vessel_category": "naval", "vessel_type": "Portland-class heavy cruiser", "cause": "Torpedoed by Japanese submarine I-58",
+        "depth_m": 5500, "lives_lost": 879, "status": "in_situ",
+        "summary": "Days after delivering atomic-bomb components to Tinian, Indianapolis was torpedoed and sank in twelve minutes. Delayed discovery left survivors exposed for days. The loss and controversial treatment of her captain remain central to U.S. naval memory.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/USS_Indianapolis_%28CA-35%29_underway_at_sea_on_27_September_1939_%2880-G-425615%29.jpg", "alt": "USS Indianapolis underway at sea in 1939", "credit": "U.S. Navy; photographer unknown", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:USS_Indianapolis_(CA-35)_underway_at_sea_on_27_September_1939_(80-G-425615).jpg" }],
+        "sources": [{ "label": "U.S. Naval History and Heritage Command", "url": "https://www.history.navy.mil/browse-by-topic/ships/modern-ships/uss-indianapolis.html" }, { "label": "National Archives", "url": "https://www.archives.gov/research/military/ww2/navy-casualties/indianapolis" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [134.8, 12.02] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "andrea-doria", "name": "Andrea Doria", "year_lost": 1956, "loss_date": "26 July 1956", "era": "modern",
+        "location": "South of Nantucket, United States", "region": "North Atlantic Ocean", "flag": "Italy",
+        "vessel_category": "passenger", "vessel_type": "Ocean liner", "cause": "Collision with MS Stockholm in fog",
+        "depth_m": 73, "lives_lost": 51, "status": "in_situ",
+        "summary": "The Italian liner collided with Stockholm in dense fog off Nantucket. A prolonged list made many lifeboats unusable, but nearby ships mounted a vast rescue. The wreck’s depth, entanglement hazards, and deteriorating structure have made it a notoriously dangerous dive.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/3/3a/SS_Andrea_Doria.jpg", "alt": "The Italian ocean liner Andrea Doria at sea", "credit": "Unknown photographer", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:SS_Andrea_Doria.jpg" }],
+        "sources": [{ "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/topic/Andrea-Doria-Italian-ship" }, { "label": "Mariners’ Museum and Park", "url": "https://www.marinersmuseum.org/2016/07/andrea-doria/" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-69.85, 40.49] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ss-edmund-fitzgerald", "name": "SS Edmund Fitzgerald", "year_lost": 1975, "loss_date": "10 November 1975", "era": "modern",
+        "location": "Lake Superior, Canada", "region": "Great Lakes", "flag": "United States",
+        "vessel_category": "merchant", "vessel_type": "Lake freighter", "cause": "Lost during a severe storm; exact sequence disputed",
+        "depth_m": 160, "lives_lost": 29, "status": "in_situ",
+        "summary": "Edmund Fitzgerald disappeared in a violent Lake Superior storm without issuing a distress call. The entire crew of 29 was lost. Investigations proposed flooding, structural failure, shoaling, and massive seas, but the precise chain of events remains debated.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Edmund_Fitzgerald%2C_1971%2C_3_of_4_%28restored%3B_cropped%29.jpg", "alt": "SS Edmund Fitzgerald underway on the Great Lakes in 1971", "credit": "Greenmars", "license": "CC BY-SA 3.0", "source_url": "https://commons.wikimedia.org/wiki/File:Edmund_Fitzgerald,_1971,_3_of_4_(restored;_cropped).jpg" }],
+        "sources": [{ "label": "Great Lakes Shipwreck Historical Society", "url": "https://shipwreckmuseum.com/edmund-fitzgerald/" }, { "label": "U.S. Coast Guard Marine Board Report", "url": "https://www.dco.uscg.mil/Portals/9/DCO%20Documents/5p/CG-5PC/INV/docs/boards/edmundfitz.pdf" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [-85.116, 46.998] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mv-dona-paz", "name": "MV Doña Paz", "year_lost": 1987, "loss_date": "20 December 1987", "era": "modern",
+        "location": "Tablas Strait, Philippines", "region": "Sibuyan Sea", "flag": "Philippines",
+        "vessel_category": "passenger", "vessel_type": "Inter-island passenger ferry", "cause": "Collision with oil tanker MT Vector",
+        "depth_m": 545, "lives_lost": 4386, "status": "in_situ",
+        "summary": "The overcrowded ferry collided with a tanker carrying petroleum products, surrounding both vessels in fire. Only 26 people from the two ships survived. The estimated toll makes Doña Paz the deadliest peacetime maritime disaster in history.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Do%C3%B1a_Paz_at_Tacloban.jpg", "alt": "MV Doña Paz at Tacloban before the disaster", "credit": "lindsaybridge", "license": "CC BY-SA 2.0", "source_url": "https://commons.wikimedia.org/wiki/File:Do%C3%B1a_Paz_at_Tacloban.jpg" }],
+        "sources": [{ "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/event/Dona-Paz-disaster" }, { "label": "International Maritime Organization", "url": "https://www.imo.org/en/About/Events/Pages/Day-of-the-Seafarer-2017.aspx" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [121.94, 12.92] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ms-estonia", "name": "MS Estonia", "year_lost": 1994, "loss_date": "28 September 1994", "era": "modern",
+        "location": "Northern Baltic Sea", "region": "Baltic Sea", "flag": "Estonia",
+        "vessel_category": "passenger", "vessel_type": "Cruise ferry", "cause": "Bow visor failure in heavy seas",
+        "depth_m": 80, "lives_lost": 852, "status": "in_situ",
+        "summary": "Estonia sank rapidly during an overnight crossing from Tallinn to Stockholm after the bow visor separated and water flooded the vehicle deck. The disaster prompted major changes to ferry construction, evacuation procedures, and international passenger-ship safety rules.",
+        "images": [{ "src": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Estonia_ferry2.jpg", "alt": "The cruise ferry Estonia at sea", "credit": "Accident Investigation Board Finland", "license": "Public domain", "source_url": "https://commons.wikimedia.org/wiki/File:Estonia_ferry2.jpg" }],
+        "sources": [{ "label": "Estonian Safety Investigation Bureau", "url": "https://www.estonia1994.ee/en" }, { "label": "Encyclopaedia Britannica", "url": "https://www.britannica.com/event/Estonia-disaster" }]
+      },
+      "geometry": { "type": "Point", "coordinates": [23.393, 59.383] }
     }
   ]
 }

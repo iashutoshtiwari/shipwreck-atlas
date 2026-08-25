@@ -1,84 +1,132 @@
-'use client'
-
-import { SearchBar } from '@/components/SearchBar'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { AtlasApp } from '@/components/AtlasApp'
 import rawWrecks from '@/data/wrecks.geojson'
-import { buildFuseIndex, normalizeWreckFeatures, searchWrecks } from '@/lib/map-utils'
+import { formatYear } from '@/lib/map-utils'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 import type { WreckFeatureCollection } from '@/lib/types'
-import dynamic from 'next/dynamic'
-import { useMemo, useState } from 'react'
+import { Anchor, Compass } from 'lucide-react'
+import { Suspense } from 'react'
 
-const Map = dynamic(() => import('@/components/Map').then((mod) => mod.Map), {
-  ssr: false,
-  loading: () => (
-    <div
-      className='h-[74vh] w-full animate-pulse rounded-3xl border border-border/60 bg-muted/40 sm:h-[80vh]'
-      aria-label='Loading map'
-    />
-  ),
-})
+const wrecks = [...(rawWrecks as WreckFeatureCollection).features].sort(
+  (first, second) => second.properties.year_lost - first.properties.year_lost,
+)
 
-const wreckCollection = normalizeWreckFeatures(rawWrecks as WreckFeatureCollection)
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'Dataset',
+      '@id': `${SITE_URL}/#shipwreck-dataset`,
+      name: 'Shipwreck Atlas historical wreck collection',
+      description: SITE_DESCRIPTION,
+      url: SITE_URL,
+      spatialCoverage: 'Worldwide',
+      temporalCoverage: '-0065/1994',
+      isAccessibleForFree: true,
+      variableMeasured: [
+        'loss date',
+        'location',
+        'vessel category',
+        'cause of loss',
+        'depth',
+        'lives lost',
+        'wreck status',
+      ],
+      keywords: [
+        'shipwrecks',
+        'maritime history',
+        'underwater archaeology',
+        'historic vessels',
+      ],
+    },
+  ],
+}
 
-export default function Page() {
-  const [query, setQuery] = useState('')
-
-  const fuse = useMemo(() => buildFuseIndex(wreckCollection.features), [])
-
-  const filteredWrecks = useMemo(() => {
-    if (!query.trim()) {
-      return wreckCollection.features
-    }
-
-    return searchWrecks(fuse, query)
-  }, [fuse, query])
-
-  const highlightedNames = useMemo(
-    () => new Set(filteredWrecks.map((feature) => feature.properties.name)),
-    [filteredWrecks],
-  )
-
+function AtlasFallback() {
   return (
-    <div className='relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.14),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(2,132,199,0.1),transparent_35%)]'>
-      <div className='pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-size-[36px_36px] opacity-20' />
-
-      <header className='sticky top-0 z-1000 border-b border-border/70 bg-background/72 backdrop-blur-xl'>
-        <div className='mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8'>
-          <div>
-            <p className='mb-1 text-[0.66rem] font-semibold uppercase tracking-[0.24em] text-primary/90'>
-              Maritime archive
-            </p>
-            <h1 className='text-2xl font-semibold tracking-tight sm:text-3xl'>Shipwreck Atlas</h1>
-            <p className='text-sm text-muted-foreground'>
-              Historical wrecks mapped from a local GeoJSON dataset
-            </p>
-          </div>
-          <div className='flex w-full items-start gap-2 lg:w-auto'>
-            <SearchBar
-              value={query}
-              onChange={setQuery}
-              resultCount={filteredWrecks.length}
-              totalCount={wreckCollection.features.length}
-            />
-            <ThemeToggle />
-          </div>
-        </div>
+    <main className='seo-atlas-fallback'>
+      <header className='seo-fallback-header'>
+        <span className='brand-mark' aria-hidden='true'>
+          <Anchor className='h-4 w-4' />
+        </span>
+        <span>
+          <span className='eyebrow'>A maritime archive</span>
+          <span className='seo-fallback-brand'>Shipwreck Atlas</span>
+        </span>
+        <span className='seo-loading-note' role='status'>
+          <Compass className='h-4 w-4 animate-spin motion-reduce:animate-none' aria-hidden='true' />
+          Drawing interactive chart…
+        </span>
       </header>
 
-      <main className='mx-auto flex w-full max-w-7xl flex-1 px-4 pb-5 pt-4 sm:px-6 lg:px-8'>
-        <Map
-          allWrecks={wreckCollection.features}
-          visibleWrecks={filteredWrecks}
-          highlightedNames={highlightedNames}
-        />
-      </main>
+      <section className='seo-fallback-intro' aria-labelledby='atlas-introduction'>
+        <p className='eyebrow'>Twenty-four sites · two millennia</p>
+        <h1 id='atlas-introduction'>Explore the world’s defining shipwrecks</h1>
+        <p>{SITE_DESCRIPTION}</p>
+        <p className='seo-method-note'>
+          This independent hobby archive compiles dates, locations, loss details, and present-day
+          status from the named museums, archives, government agencies, and established references
+          listed with every profile. Images link to their Wikimedia Commons credit and license pages.
+        </p>
+      </section>
 
-      <footer className='border-t border-border/70 bg-background/82 backdrop-blur-md'>
-        <div className='mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-3 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8'>
-          <span>Map data: OpenStreetMap contributors</span>
-          <span>Built for modern static hosting with Next.js</span>
+      <section className='seo-wreck-index' aria-labelledby='static-wreck-index'>
+        <div className='seo-index-heading'>
+          <div>
+            <p className='eyebrow'>The collection</p>
+            <h2 id='static-wreck-index'>Historic wreck index</h2>
+          </div>
+          <span>{wrecks.length} records</span>
         </div>
-      </footer>
-    </div>
+
+        <div className='seo-wreck-grid'>
+          {wrecks.map(({ properties }) => (
+            <article key={properties.id} id={`wreck-${properties.id}`} className='seo-wreck-card'>
+              <header>
+                <p>
+                  {formatYear(properties.year_lost)} · {properties.vessel_type}
+                </p>
+                <h3>{properties.name}</h3>
+                <span>
+                  {properties.location} · {properties.region}
+                </span>
+              </header>
+              <p>{properties.summary}</p>
+              <footer>
+                <span>Sources</span>
+                {properties.sources.map((source) => (
+                  <a key={source.url} href={source.url} target='_blank' rel='noreferrer'>
+                    {source.label}
+                  </a>
+                ))}
+              </footer>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+export default function Page() {
+  return (
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <Suspense fallback={<AtlasFallback />}>
+        <AtlasApp />
+      </Suspense>
+    </>
   )
 }
