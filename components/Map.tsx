@@ -47,6 +47,21 @@ function layerColorExpression(selectedId: string | null): ExpressionSpecificatio
   return ['case', ['==', ['get', 'id'], selectedId ?? ''], '#f3e4c7', '#bc8b55']
 }
 
+function removeMap(map: maptilersdk.Map): void {
+  // MapLibre tears down with setStyle(null). MapTiler SDK 4.1 intercepts that
+  // internal call as an invalid public style, so use the base implementation.
+  const mapLibreMapPrototype = Object.getPrototypeOf(maptilersdk.Map.prototype) as {
+    setStyle: maptilersdk.Map['setStyle']
+  }
+
+  Object.defineProperty(map, 'setStyle', {
+    configurable: true,
+    value: mapLibreMapPrototype.setStyle,
+    writable: true,
+  })
+  map.remove()
+}
+
 type MapControl = Parameters<maptilersdk.Map['addControl']>[0]
 
 function createResetControl(): MapControl {
@@ -115,10 +130,10 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
       if (!mapContainerRef.current || mapRef.current) return
 
       maptilersdk.config.apiKey = apiKey
+      const reducedMotion = prefersReducedMotion()
       const map = new maptilersdk.Map({
         container: mapContainerRef.current,
-        // MapTiler accepts style IDs directly, which keeps selection stable across bundlers.
-        style: 'ocean-v4-dark',
+        style: maptilersdk.MapStyle.OCEAN.DARK,
         center: [8, 22],
         zoom: 1.25,
         minZoom: 1,
@@ -131,6 +146,8 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
         scaleControl: 'bottom-right',
         maptilerLogo: true,
         attributionControl: { compact: 'auto' },
+        fadeDuration: reducedMotion ? 0 : 300,
+        validateStyle: process.env.NODE_ENV !== 'production',
       })
 
       mapRef.current = map
@@ -268,7 +285,7 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
       if (!map) return
 
       popupRef.current?.remove()
-      map.remove()
+      removeMap(map)
       if (mapRef.current === map) mapRef.current = null
     }
     // Map initialization deliberately runs only when the public API key changes.

@@ -2,13 +2,18 @@
   "name": "shipwreck-atlas",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "preview": "pnpm dlx serve@latest out",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "validate:data": "node scripts/validate-wrecks.mjs"
+    "validate:data": "node scripts/validate-wrecks.mjs",
+    "check": "pnpm validate:data && pnpm typecheck && pnpm lint && pnpm build"
   },
   "dependencies": {
     "@maptiler/sdk": "^4.1.0",

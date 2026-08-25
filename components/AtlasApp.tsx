@@ -22,6 +22,10 @@ const OceanMap = dynamic(() => import('@/components/Map').then((module) => modul
 })
 
 const wreckCollection = normalizeWreckFeatures(rawWrecks as WreckFeatureCollection)
+const wrecksById = new Map(
+  wreckCollection.features.map((wreck) => [wreck.properties.id, wreck]),
+)
+const wreckSearchIndex = buildFuseIndex(wreckCollection.features)
 
 export function AtlasApp() {
   const router = useRouter()
@@ -37,14 +41,9 @@ export function AtlasApp() {
   const focusReturnIdRef = useRef<string | null>(null)
   const deferredFilters = useDeferredValue(filters)
 
-  const wrecksById = useMemo(
-    () => new Map(wreckCollection.features.map((wreck) => [wreck.properties.id, wreck])),
-    [],
-  )
-  const fuse = useMemo(() => buildFuseIndex(wreckCollection.features), [])
   const filteredWrecks = useMemo(
-    () => filterWrecks(wreckCollection.features, fuse, deferredFilters),
-    [deferredFilters, fuse],
+    () => filterWrecks(wreckCollection.features, wreckSearchIndex, deferredFilters),
+    [deferredFilters],
   )
   const selectedWreck = selectedSlug ? wrecksById.get(selectedSlug) ?? null : null
 
@@ -52,7 +51,7 @@ export function AtlasApp() {
     if (selectedSlug && !wrecksById.has(selectedSlug)) {
       router.replace('/', { scroll: false })
     }
-  }, [router, selectedSlug, wrecksById])
+  }, [router, selectedSlug])
 
   useEffect(() => {
     if (selectedWreck || !focusReturnIdRef.current) return
@@ -74,21 +73,21 @@ export function AtlasApp() {
       router.replace(`/?wreck=${encodeURIComponent(wreck.properties.id)}`, { scroll: false })
       setMobileExpanded(false)
     },
-    [router],
+    [router, setMobileExpanded],
   )
 
   const closeDetails = useCallback(() => {
     focusReturnIdRef.current = selectedSlug
     router.replace('/', { scroll: false })
     setMobileExpanded(true)
-  }, [router, selectedSlug])
+  }, [router, selectedSlug, setMobileExpanded])
 
   const selectWreckById = useCallback(
     (id: string) => {
       const wreck = wrecksById.get(id)
       if (wreck) selectWreck(wreck)
     },
-    [selectWreck, wrecksById],
+    [selectWreck],
   )
 
   return (

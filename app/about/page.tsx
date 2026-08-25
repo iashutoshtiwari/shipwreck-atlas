@@ -8,16 +8,31 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 const description =
-  'Learn how Shipwreck Atlas selects, researches, illustrates, and maintains its collection of 24 historic wreck sites.'
+  'Discover how Shipwreck Atlas researches, illustrates, and maintains 24 historic wreck profiles using named references and public-domain archival imagery.'
+const socialImage = {
+  url: '/opengraph-image',
+  width: 1200,
+  height: 630,
+  alt: 'Shipwreck Atlas — an interactive maritime history archive',
+}
 
 export const metadata: Metadata = {
   title: 'About the Atlas',
   description,
   alternates: { canonical: '/about' },
   openGraph: {
+    type: 'website',
     title: `About the Atlas | ${SITE_NAME}`,
     description,
     url: '/about',
+    siteName: SITE_NAME,
+    images: [socialImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `About the Atlas | ${SITE_NAME}`,
+    description,
+    images: [socialImage],
   },
 }
 
@@ -54,7 +69,7 @@ export default function AboutPage() {
               <WreckImage
                 image={titanicWreckImage}
                 sizes='(max-width: 760px) 100vw, 62vw'
-                width={1600}
+                width={1280}
                 preload
                 className='about-hero-image'
               />
@@ -168,7 +183,7 @@ export default function AboutPage() {
           </div>
           <div className='about-wreck-grid'>
             {wrecks.map(({ properties }) => (
-              <Link key={properties.id} href={`/?wreck=${properties.id}`}>
+              <Link key={properties.id} href={`/?wreck=${properties.id}`} prefetch={false}>
                 <span>{formatYear(properties.year_lost)}</span>
                 <strong>{properties.name}</strong>
                 <small>{properties.location}</small>

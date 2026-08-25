@@ -12,6 +12,8 @@ A dark, map-first maritime archive charting 24 historically significant shipwrec
 
 ## Local setup
 
+Use Node.js 20.9 or newer and pnpm 11.
+
 Install dependencies and copy the environment template:
 
 ```bash
@@ -49,11 +51,10 @@ pnpm validate:data
 ## Quality checks
 
 ```bash
-pnpm validate:data
-pnpm typecheck
-pnpm lint
-pnpm build
+pnpm check
 ```
+
+This runs data validation, TypeScript, ESLint, and the production build in sequence.
 
 The project uses `output: 'export'`; the production build is written to `out/` for static hosting.
 
