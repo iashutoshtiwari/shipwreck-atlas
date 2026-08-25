@@ -74,6 +74,18 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  button:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  select:disabled {
+    cursor: not-allowed;
+  }
+
   ::selection {
     background: hsl(var(--primary) / 0.32);
     color: hsl(var(--foreground));
@@ -122,6 +134,28 @@
   border: 1px solid hsl(var(--primary) / 0.42);
   border-radius: 50%;
   color: hsl(var(--primary));
+}
+
+.brand-home-link {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.9rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-title {
+  display: block;
+  transition: color 150ms ease;
+}
+
+.brand-home-link:hover .brand-title {
+  color: hsl(var(--primary));
+}
+
+.brand-home-link:hover .brand-mark {
+  border-color: hsl(var(--primary) / 0.8);
 }
 
 .header-rule {
@@ -410,8 +444,8 @@
 .map-legend {
   position: absolute;
   z-index: 8;
-  right: 0.75rem;
-  bottom: 2.35rem;
+  top: 0.75rem;
+  left: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -430,34 +464,6 @@
   border: 1px solid hsl(var(--foreground));
   border-radius: 50%;
   background: hsl(var(--primary));
-}
-
-.map-reset-button {
-  position: absolute;
-  z-index: 10;
-  top: 6.55rem;
-  right: 0.65rem;
-  display: grid;
-  width: 1.82rem;
-  height: 1.82rem;
-  place-items: center;
-  border: 0;
-  border-radius: 0.2rem;
-  background: #fff;
-  color: #263238;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.18);
-  transition:
-    transform 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.map-reset-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.24);
-}
-
-.map-reset-button:active {
-  transform: translateY(0) scale(0.96);
 }
 
 .map-error {
@@ -835,6 +841,12 @@
 
 .maplibregl-ctrl-group button:hover {
   background-color: hsl(var(--muted)) !important;
+}
+
+.map-reset-control {
+  color: hsl(var(--foreground)) !important;
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
 }
 
 .maplibregl-ctrl-group .maplibregl-ctrl-icon {
@@ -1217,13 +1229,8 @@
   }
 
   .map-legend {
-    right: auto;
-    bottom: 6.25rem;
+    top: 0.65rem;
     left: 0.65rem;
-  }
-
-  .map-reset-button {
-    top: 6.55rem;
   }
 
   .maplibregl-ctrl-bottom-left,

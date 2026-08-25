@@ -7,6 +7,7 @@ import { buildFuseIndex, filterWrecks, normalizeWreckFeatures } from '@/lib/map-
 import type { WreckFeature, WreckFeatureCollection, WreckFilters } from '@/lib/types'
 import { Anchor, ListFilter, MapPin } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 
@@ -93,15 +94,17 @@ export function AtlasApp() {
   return (
     <div className='atlas-shell' data-has-selection={Boolean(selectedWreck)}>
       <header className='atlas-header'>
-        <div className='brand-mark' aria-hidden='true'>
-          <Anchor className='h-4 w-4' />
-        </div>
-        <div className='min-w-0'>
-          <p className='eyebrow hidden sm:block'>A maritime archive</p>
-          <h1 className='truncate font-serif text-[1.55rem] leading-none tracking-[-0.035em] sm:text-[1.7rem]'>
-            Shipwreck Atlas
-          </h1>
-        </div>
+        <Link href='/' className='brand-home-link' aria-label='Shipwreck Atlas home'>
+          <span className='brand-mark' aria-hidden='true'>
+            <Anchor className='h-4 w-4' />
+          </span>
+          <span className='min-w-0'>
+            <span className='eyebrow hidden sm:block'>A maritime archive</span>
+            <h1 className='brand-title truncate font-serif text-[1.55rem] leading-none tracking-[-0.035em] sm:text-[1.7rem]'>
+              Shipwreck Atlas
+            </h1>
+          </span>
+        </Link>
         <div className='header-rule' />
         <p className='hidden items-center gap-2 text-xs text-muted-foreground md:flex'>
           <MapPin className='h-3.5 w-3.5 text-primary' aria-hidden='true' />

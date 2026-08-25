@@ -72,7 +72,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel='preconnect' href='https://api.maptiler.com' crossOrigin='anonymous' />
         <link rel='preconnect' href='https://upload.wikimedia.org' crossOrigin='anonymous' />
       </head>
-      <body className='bg-background font-sans text-foreground antialiased'>{children}</body>
+      <body
+        suppressHydrationWarning
+        className='bg-background font-sans text-foreground antialiased'
+      >
+        {children}
+      </body>
     </html>
   )
 }

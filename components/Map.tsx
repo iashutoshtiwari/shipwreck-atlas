@@ -5,8 +5,8 @@ import '@maptiler/sdk/dist/maptiler-sdk.css'
 import type { WreckFeature } from '@/lib/types'
 import * as maptilersdk from '@maptiler/sdk'
 import type { ExpressionSpecification } from '@maptiler/sdk'
-import { KeyRound, RotateCcw, TriangleAlert } from 'lucide-react'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { KeyRound, TriangleAlert } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 type MapProps = {
   wrecks: WreckFeature[]
@@ -47,6 +47,46 @@ function layerColorExpression(selectedId: string | null): ExpressionSpecificatio
   return ['case', ['==', ['get', 'id'], selectedId ?? ''], '#f3e4c7', '#bc8b55']
 }
 
+type MapControl = Parameters<maptilersdk.Map['addControl']>[0]
+
+function createResetControl(): MapControl {
+  let container: HTMLDivElement | null = null
+  let button: HTMLButtonElement | null = null
+  let handleReset: (() => void) | null = null
+
+  return {
+    onAdd(map) {
+      container = document.createElement('div')
+      container.className = 'maplibregl-ctrl maplibregl-ctrl-group'
+
+      button = document.createElement('button')
+      button.type = 'button'
+      button.className = 'map-reset-control'
+      button.title = 'Reset world view'
+      button.setAttribute('aria-label', 'Reset world view')
+      button.textContent = '↺'
+
+      handleReset = () => {
+        map.fitBounds(WORLD_BOUNDS, {
+          padding: 40,
+          duration: prefersReducedMotion() ? 0 : 650,
+        })
+      }
+
+      button.addEventListener('click', handleReset)
+      container.append(button)
+      return container
+    },
+    onRemove() {
+      if (button && handleReset) button.removeEventListener('click', handleReset)
+      container?.remove()
+      container = null
+      button = null
+      handleReset = null
+    },
+  }
+}
+
 export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maptilersdk.Map | null>(null)
@@ -71,155 +111,165 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
   useEffect(() => {
     if (!apiKey || !mapContainerRef.current || mapRef.current) return
 
-    maptilersdk.config.apiKey = apiKey
-    const map = new maptilersdk.Map({
-      container: mapContainerRef.current,
-      style: maptilersdk.MapStyle.OCEAN.DARK,
-      center: [8, 22],
-      zoom: 1.25,
-      minZoom: 1,
-      maxZoom: 13,
-      maxPitch: 0,
-      renderWorldCopies: true,
-      navigationControl: 'top-right',
-      geolocateControl: false,
-      terrainControl: false,
-      scaleControl: 'bottom-right',
-      maptilerLogo: true,
-      attributionControl: { compact: 'auto' },
-    })
+    const initializationFrame = window.requestAnimationFrame(() => {
+      if (!mapContainerRef.current || mapRef.current) return
 
-    mapRef.current = map
-
-    map.on('load', () => {
-      map.addSource(SOURCE_ID, {
-        type: 'geojson',
-        data: { type: 'FeatureCollection', features: wrecks },
-        cluster: true,
-        clusterMaxZoom: 7,
-        clusterRadius: 52,
+      maptilersdk.config.apiKey = apiKey
+      const map = new maptilersdk.Map({
+        container: mapContainerRef.current,
+        // MapTiler accepts style IDs directly, which keeps selection stable across bundlers.
+        style: 'ocean-v4-dark',
+        center: [8, 22],
+        zoom: 1.25,
+        minZoom: 1,
+        maxZoom: 13,
+        maxPitch: 0,
+        renderWorldCopies: true,
+        navigationControl: 'top-right',
+        geolocateControl: false,
+        terrainControl: false,
+        scaleControl: 'bottom-right',
+        maptilerLogo: true,
+        attributionControl: { compact: 'auto' },
       })
 
-      map.addLayer({
-        id: CLUSTERS_LAYER,
-        type: 'circle',
-        source: SOURCE_ID,
-        filter: ['has', 'point_count'],
-        paint: {
-          'circle-color': '#9a7149',
-          'circle-radius': ['step', ['get', 'point_count'], 17, 5, 20, 10, 24],
-          'circle-stroke-color': 'rgba(247, 232, 204, 0.82)',
-          'circle-stroke-width': 1,
-          'circle-opacity': 0.92,
-        },
-      })
+      mapRef.current = map
+      map.addControl(createResetControl(), 'top-right')
 
-      map.addLayer({
-        id: CLUSTER_COUNT_LAYER,
-        type: 'symbol',
-        source: SOURCE_ID,
-        filter: ['has', 'point_count'],
-        layout: {
-          'text-field': ['get', 'point_count_abbreviated'],
-          'text-size': 11,
-        },
-        paint: {
-          'text-color': '#07151c',
-        },
-      })
-
-      map.addLayer({
-        id: POINTS_LAYER,
-        type: 'circle',
-        source: SOURCE_ID,
-        filter: ['!', ['has', 'point_count']],
-        paint: {
-          'circle-color': layerColorExpression(selectedId),
-          'circle-radius': layerStateExpression(selectedId, hoveredId),
-          'circle-stroke-color': '#f3e4c7',
-          'circle-stroke-width': ['case', ['==', ['get', 'id'], selectedId ?? ''], 3, 1.5],
-          'circle-opacity': 0.96,
-          'circle-radius-transition': {
-            duration: prefersReducedMotion() ? 0 : 180,
-            delay: 0,
-          },
-          'circle-color-transition': {
-            duration: prefersReducedMotion() ? 0 : 180,
-            delay: 0,
-          },
-          'circle-stroke-width-transition': {
-            duration: prefersReducedMotion() ? 0 : 180,
-            delay: 0,
-          },
-        },
-      })
-
-      map.on('click', CLUSTERS_LAYER, async (event) => {
-        const feature = map.queryRenderedFeatures(event.point, { layers: [CLUSTERS_LAYER] })[0]
-        const clusterId = feature?.properties?.cluster_id
-        const source = map.getSource(SOURCE_ID) as maptilersdk.GeoJSONSource | undefined
-
-        if (!source || clusterId === undefined || feature.geometry.type !== 'Point') return
-
-        const zoom = await source.getClusterExpansionZoom(Number(clusterId))
-        map.easeTo({
-          center: feature.geometry.coordinates as [number, number],
-          zoom,
-          duration: prefersReducedMotion() ? 0 : 650,
+      map.on('load', () => {
+        map.addSource(SOURCE_ID, {
+          type: 'geojson',
+          data: { type: 'FeatureCollection', features: wrecks },
+          cluster: true,
+          clusterMaxZoom: 7,
+          clusterRadius: 52,
         })
-      })
 
-      map.on('click', POINTS_LAYER, (event) => {
-        const id = event.features?.[0]?.properties?.id
-        if (typeof id === 'string') onSelectRef.current(id)
-      })
+        map.addLayer({
+          id: CLUSTERS_LAYER,
+          type: 'circle',
+          source: SOURCE_ID,
+          filter: ['has', 'point_count'],
+          paint: {
+            'circle-color': '#9a7149',
+            'circle-radius': ['step', ['get', 'point_count'], 17, 5, 20, 10, 24],
+            'circle-stroke-color': 'rgba(247, 232, 204, 0.82)',
+            'circle-stroke-width': 1,
+            'circle-opacity': 0.92,
+          },
+        })
 
-      map.on('mouseenter', CLUSTERS_LAYER, () => {
-        map.getCanvas().style.cursor = 'pointer'
-      })
+        map.addLayer({
+          id: CLUSTER_COUNT_LAYER,
+          type: 'symbol',
+          source: SOURCE_ID,
+          filter: ['has', 'point_count'],
+          layout: {
+            'text-field': ['get', 'point_count_abbreviated'],
+            'text-size': 11,
+          },
+          paint: {
+            'text-color': '#07151c',
+          },
+        })
 
-      map.on('mouseleave', CLUSTERS_LAYER, () => {
-        map.getCanvas().style.cursor = ''
-      })
+        map.addLayer({
+          id: POINTS_LAYER,
+          type: 'circle',
+          source: SOURCE_ID,
+          filter: ['!', ['has', 'point_count']],
+          paint: {
+            'circle-color': layerColorExpression(selectedId),
+            'circle-radius': layerStateExpression(selectedId, hoveredId),
+            'circle-stroke-color': '#f3e4c7',
+            'circle-stroke-width': ['case', ['==', ['get', 'id'], selectedId ?? ''], 3, 1.5],
+            'circle-opacity': 0.96,
+            'circle-radius-transition': {
+              duration: prefersReducedMotion() ? 0 : 180,
+              delay: 0,
+            },
+            'circle-color-transition': {
+              duration: prefersReducedMotion() ? 0 : 180,
+              delay: 0,
+            },
+            'circle-stroke-width-transition': {
+              duration: prefersReducedMotion() ? 0 : 180,
+              delay: 0,
+            },
+          },
+        })
 
-      map.on('mouseenter', POINTS_LAYER, (event) => {
-        map.getCanvas().style.cursor = 'pointer'
-        const feature = event.features?.[0]
-        const id = feature?.properties?.id
-        const name = feature?.properties?.name
+        map.on('click', CLUSTERS_LAYER, async (event) => {
+          const feature = map.queryRenderedFeatures(event.point, { layers: [CLUSTERS_LAYER] })[0]
+          const clusterId = feature?.properties?.cluster_id
+          const source = map.getSource(SOURCE_ID) as maptilersdk.GeoJSONSource | undefined
 
-        if (typeof id === 'string') onHoverRef.current(id)
-        if (feature?.geometry.type === 'Point' && typeof name === 'string') {
-          popupRef.current?.remove()
-          popupRef.current = new maptilersdk.Popup({
-            closeButton: false,
-            closeOnClick: false,
-            offset: 12,
-            className: 'wreck-map-tooltip',
+          if (!source || clusterId === undefined || feature.geometry.type !== 'Point') return
+
+          const zoom = await source.getClusterExpansionZoom(Number(clusterId))
+          map.easeTo({
+            center: feature.geometry.coordinates as [number, number],
+            zoom,
+            duration: prefersReducedMotion() ? 0 : 650,
           })
-            .setLngLat(feature.geometry.coordinates as [number, number])
-            .setText(name)
-            .addTo(map)
-        }
+        })
+
+        map.on('click', POINTS_LAYER, (event) => {
+          const id = event.features?.[0]?.properties?.id
+          if (typeof id === 'string') onSelectRef.current(id)
+        })
+
+        map.on('mouseenter', CLUSTERS_LAYER, () => {
+          map.getCanvas().style.cursor = 'pointer'
+        })
+
+        map.on('mouseleave', CLUSTERS_LAYER, () => {
+          map.getCanvas().style.cursor = ''
+        })
+
+        map.on('mouseenter', POINTS_LAYER, (event) => {
+          map.getCanvas().style.cursor = 'pointer'
+          const feature = event.features?.[0]
+          const id = feature?.properties?.id
+          const name = feature?.properties?.name
+
+          if (typeof id === 'string') onHoverRef.current(id)
+          if (feature?.geometry.type === 'Point' && typeof name === 'string') {
+            popupRef.current?.remove()
+            popupRef.current = new maptilersdk.Popup({
+              closeButton: false,
+              closeOnClick: false,
+              offset: 12,
+              className: 'wreck-map-tooltip',
+            })
+              .setLngLat(feature.geometry.coordinates as [number, number])
+              .setText(name)
+              .addTo(map)
+          }
+        })
+
+        map.on('mouseleave', POINTS_LAYER, () => {
+          map.getCanvas().style.cursor = ''
+          onHoverRef.current(null)
+          popupRef.current?.remove()
+        })
+
+        setMapLoaded(true)
       })
 
-      map.on('mouseleave', POINTS_LAYER, () => {
-        map.getCanvas().style.cursor = ''
-        onHoverRef.current(null)
-        popupRef.current?.remove()
+      map.on('error', () => {
+        if (!map.isStyleLoaded()) setMapError(true)
       })
-
-      setMapLoaded(true)
-    })
-
-    map.on('error', () => {
-      if (!map.isStyleLoaded()) setMapError(true)
     })
 
     return () => {
+      window.cancelAnimationFrame(initializationFrame)
+      const map = mapRef.current
+      if (!map) return
+
       popupRef.current?.remove()
       map.remove()
-      mapRef.current = null
+      if (mapRef.current === map) mapRef.current = null
     }
     // Map initialization deliberately runs only when the public API key changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -237,11 +287,7 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
     const map = mapRef.current
     if (!mapLoaded || !map || !map.getLayer(POINTS_LAYER)) return
 
-    map.setPaintProperty(
-      POINTS_LAYER,
-      'circle-radius',
-      layerStateExpression(selectedId, hoveredId),
-    )
+    map.setPaintProperty(POINTS_LAYER, 'circle-radius', layerStateExpression(selectedId, hoveredId))
     map.setPaintProperty(POINTS_LAYER, 'circle-color', layerColorExpression(selectedId))
     map.setPaintProperty(POINTS_LAYER, 'circle-stroke-width', [
       'case',
@@ -281,16 +327,6 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
     })
   }, [mapLoaded, selectedId])
 
-  const resetMap = useCallback(() => {
-    const map = mapRef.current
-    if (!map) return
-
-    map.fitBounds(WORLD_BOUNDS, {
-      padding: 40,
-      duration: prefersReducedMotion() ? 0 : 650,
-    })
-  }, [])
-
   if (!apiKey) {
     return (
       <div className='map-setup-state'>
@@ -312,9 +348,6 @@ export function Map({ wrecks, selectedId, hoveredId, onSelect, onHover }: MapPro
   return (
     <>
       <div ref={mapContainerRef} className={`ocean-map${mapLoaded ? ' is-loaded' : ''}`} />
-      <button type='button' className='map-reset-button' onClick={resetMap} aria-label='Reset world view'>
-        <RotateCcw className='h-4 w-4' aria-hidden='true' />
-      </button>
       {mapError ? (
         <div className='map-error' role='status'>
           <TriangleAlert className='h-4 w-4' aria-hidden='true' />
