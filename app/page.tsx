@@ -4,6 +4,7 @@ import { formatYear } from '@/lib/map-utils'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 import type { WreckFeatureCollection } from '@/lib/types'
 import { Anchor, Compass } from 'lucide-react'
+import Link from 'next/link'
 import { Suspense } from 'react'
 
 const wrecks = [...(rawWrecks as WreckFeatureCollection).features].sort(
@@ -60,6 +61,9 @@ function AtlasFallback() {
           <span className='eyebrow'>A maritime archive</span>
           <span className='seo-fallback-brand'>Shipwreck Atlas</span>
         </span>
+        <Link href='/about' className='seo-about-link'>
+          About
+        </Link>
         <span className='seo-loading-note' role='status'>
           <Compass className='h-4 w-4 animate-spin motion-reduce:animate-none' aria-hidden='true' />
           Drawing interactive chart…

@@ -12,6 +12,7 @@ import type {
 } from '@/lib/types'
 import { VESSEL_CATEGORIES, WRECK_ERAS } from '@/lib/types'
 import { Anchor, ChevronDown, RotateCcw } from 'lucide-react'
+import Link from 'next/link'
 import { memo, type CSSProperties } from 'react'
 
 type ArchivePanelProps = {
@@ -167,13 +168,16 @@ export function ArchivePanel({
               agencies, and established references in each profile. Images link to their Wikimedia
               Commons credit and license pages. Last reviewed August 2026.
             </p>
-            <a
-              href='https://github.com/iashutoshtiwari/shipwreck-atlas'
-              target='_blank'
-              rel='noreferrer'
-            >
-              Project source and corrections
-            </a>
+            <div className='archive-methodology-links'>
+              <Link href='/about'>Full project notes</Link>
+              <a
+                href='https://github.com/iashutoshtiwari/shipwreck-atlas'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Source and corrections
+              </a>
+            </div>
           </details>
           <p>
             Cartography ©{' '}

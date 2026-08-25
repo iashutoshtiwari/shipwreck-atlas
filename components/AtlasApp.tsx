@@ -110,6 +110,9 @@ export function AtlasApp() {
           <MapPin className='h-3.5 w-3.5 text-primary' aria-hidden='true' />
           24 sites · c. 65 BCE—1994
         </p>
+        <Link href='/about' className='header-about-link'>
+          About
+        </Link>
         <button
           type='button'
           className='header-archive-button'
