@@ -1,4 +1,5 @@
 import rawWrecks from '@/data/wrecks.geojson'
+import { WreckImage } from '@/components/WreckImage'
 import { formatYear } from '@/lib/map-utils'
 import { SITE_NAME } from '@/lib/site'
 import type { WreckFeatureCollection } from '@/lib/types'
@@ -23,6 +24,9 @@ export const metadata: Metadata = {
 const wrecks = [...(rawWrecks as WreckFeatureCollection).features].sort(
   (first, second) => second.properties.year_lost - first.properties.year_lost,
 )
+const titanicWreckImage = wrecks
+  .find(({ properties }) => properties.id === 'rms-titanic')
+  ?.properties.images.find(({ alt }) => alt.toLowerCase().includes('bow'))
 
 export default function AboutPage() {
   return (
@@ -45,25 +49,46 @@ export default function AboutPage() {
 
       <article className='about-content'>
         <section className='about-hero'>
-          <p className='eyebrow'>About the project</p>
-          <h1>A hand-built guide to the wrecks that shaped maritime history.</h1>
-          <p className='about-lede'>
-            Shipwreck Atlas is an independent hobby project for curious history enthusiasts. It
-            brings twenty-four notable wreck sites into one navigable chart, pairing concise context
-            with archival imagery and named references.
-          </p>
-          <div className='about-actions'>
-            <Link href='/' className='about-primary-action'>
-              Explore the map
-              <ArrowUpRight className='h-4 w-4' aria-hidden='true' />
-            </Link>
-            <a
-              href='https://github.com/iashutoshtiwari/shipwreck-atlas'
-              target='_blank'
-              rel='noreferrer'
-            >
-              View project source
-            </a>
+          {titanicWreckImage ? (
+            <figure className='about-hero-media'>
+              <WreckImage
+                image={titanicWreckImage}
+                sizes='(max-width: 760px) 100vw, 62vw'
+                width={1600}
+                preload
+                className='about-hero-image'
+              />
+              <span className='about-hero-fade' aria-hidden='true' />
+              <figcaption>
+                <a href={titanicWreckImage.source_url} target='_blank' rel='noreferrer'>
+                  Titanic’s bow · {titanicWreckImage.credit}
+                </a>
+                <span>{titanicWreckImage.license}</span>
+              </figcaption>
+            </figure>
+          ) : null}
+
+          <div className='about-hero-copy'>
+            <p className='eyebrow'>About the project</p>
+            <h1>A hand-built guide to the wrecks that shaped maritime history.</h1>
+            <p className='about-lede'>
+              Shipwreck Atlas is an independent hobby project for curious history enthusiasts. It
+              brings twenty-four notable wreck sites into one navigable chart, pairing concise
+              context with archival imagery and named references.
+            </p>
+            <div className='about-actions'>
+              <Link href='/' className='about-primary-action'>
+                Explore the map
+                <ArrowUpRight className='h-4 w-4' aria-hidden='true' />
+              </Link>
+              <a
+                href='https://github.com/iashutoshtiwari/shipwreck-atlas'
+                target='_blank'
+                rel='noreferrer'
+              >
+                View project source
+              </a>
+            </div>
           </div>
         </section>
 

@@ -964,7 +964,79 @@
 }
 
 .about-hero {
-  max-width: 55rem;
+  position: relative;
+  display: flex;
+  width: 100vw;
+  min-height: clamp(36rem, 58vw, 44rem);
+  align-items: center;
+  margin-left: calc(50% - 50vw);
+  padding-inline: max(1.25rem, calc((100vw - 72rem) / 2));
+  isolation: isolate;
+}
+
+.about-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(68%, 55rem);
+  padding: 3rem 0;
+}
+
+.about-hero-media {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 31%;
+  margin: 0;
+  overflow: hidden;
+  background: hsl(var(--muted));
+}
+
+.about-hero-image {
+  object-position: 58% center;
+  filter: saturate(0.72) contrast(1.08) brightness(0.82);
+}
+
+.about-hero-fade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--background) / 0.95) 15%,
+      hsl(var(--background) / 0.5) 43%,
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      hsl(var(--background) / 0.72) 0%,
+      transparent 18%,
+      transparent 72%,
+      hsl(var(--background)) 100%
+    );
+}
+
+.about-hero-media figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: hsl(var(--foreground) / 0.66);
+  font-size: 0.58rem;
+  letter-spacing: 0.025em;
+}
+
+.about-hero-media figcaption a {
+  color: inherit;
+  text-underline-offset: 0.16rem;
+}
+
+.about-hero-media figcaption span::before {
+  content: '·';
+  margin-right: 0.45rem;
 }
 
 .about-hero h1 {
@@ -1572,7 +1644,54 @@
 @media (max-width: 760px) {
   .about-content {
     width: min(100% - 1.5rem, 40rem);
-    padding-top: 3.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .about-hero {
+    min-height: 43rem;
+    align-items: flex-end;
+    padding-inline: 0.75rem;
+  }
+
+  .about-hero-copy {
+    width: 100%;
+    padding: 12rem 0 3.5rem;
+  }
+
+  .about-hero-media {
+    inset: 0 0 auto 13%;
+    height: 26rem;
+  }
+
+  .about-hero-fade {
+    background:
+      linear-gradient(
+        90deg,
+        hsl(var(--background) / 0.92) 0%,
+        hsl(var(--background) / 0.22) 62%,
+        transparent 100%
+      ),
+      linear-gradient(
+        180deg,
+        hsl(var(--background) / 0.25) 0%,
+        transparent 40%,
+        hsl(var(--background)) 95%
+      );
+  }
+
+  .about-hero-media figcaption {
+    top: 0.7rem;
+    right: 0.7rem;
+    bottom: auto;
+    max-width: 12rem;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 0.15rem;
+    text-align: right;
+  }
+
+  .about-hero-media figcaption span::before {
+    content: none;
   }
 
   .about-principles,
